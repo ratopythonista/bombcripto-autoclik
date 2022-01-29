@@ -1,0 +1,1 @@
+bcoin_log_file = open("./autoclick/files/bcoin_log_file.csv", "a+")

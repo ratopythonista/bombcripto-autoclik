@@ -1,48 +1,38 @@
 from time import sleep
-from datetime import datetime
 
 import pyautogui
-import pytesseract
-from PIL import Image
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
-bcoin_log_file = open("bcoin_log_file.csv", "a+")
+from autoclick.modules.bombcrypto.hero import Hero
+from autoclick.modules.bombcrypto.chest import Chest
 
-bau = pyautogui.locateCenterOnScreen("./autoclick/files/bau.png")
-pyautogui.moveTo(*bau, duration=1)
-pyautogui.click() 
+while True:
 
-sleep(1.5)
+    chest = Chest().open()
 
-pyautogui.screenshot("./autoclick/files/screen.png")
-screenshot = Image.open("./autoclick/files/screen.png")
-bcoin = screenshot.crop((385, 635, 549, 685))
-bcoin_string = pytesseract.image_to_string(bcoin)
-bcoin = float(bcoin_string.replace(",", "."))
-time = datetime.now().timestamp()
-bcoin_log_file.write(f"{time};{bcoin}\n")
+    sleep(1.5)
 
-sleep(1.5)
+    chest.get_bcoin_value()
 
-pyautogui.moveRel(-130, 100, duration=1)
-pyautogui.click()
+    sleep(1.5)
 
-sleep(3)
+    chest.close()
 
-pyautogui.moveTo(*bau, duration=1)
-pyautogui.moveRel(-450, 700, duration=1)
+    sleep(1)
 
-pyautogui.click()
-pyautogui.click()
+    hero = Hero().open()
 
-sleep(5)
+    sleep(4)
 
-fechar = pyautogui.locateCenterOnScreen("./autoclick/files/fechar.png")
+    if hero.has_full_hero():
+        hero.set_all_to_work()
+        sleep(2)
 
-# TODO Check if energy is full
-# TODO Set all to work
+    hero.close()
 
-pyautogui.moveTo(*fechar, duration=1)
-pyautogui.click()
-sleep(1)
-pyautogui.click()
+    sleep(50)
+
+    for iteration in range(9):
+        print(iteration+1, "minutes waited")
+        pyautogui.moveTo(600, 210, duration=1)
+        pyautogui.click()
+        sleep(59)
