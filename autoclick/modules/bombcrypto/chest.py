@@ -12,12 +12,12 @@ class Chest:
         self.bcoin_value_coordinates = (385, 635, 549, 685)
 
     def open(self):
-        pyautogui.moveTo(*self.open_chest_button, duration=1)
+        pyautogui.moveTo(*self.open_chest_button)
         pyautogui.click()
         return self
 
     def close(self):
-        pyautogui.moveTo(*self.close_chest_button, duration=1)
+        pyautogui.moveTo(*self.close_chest_button)
         pyautogui.click()
 
     def get_bcoin_value(self):

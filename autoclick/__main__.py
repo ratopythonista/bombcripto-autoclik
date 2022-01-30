@@ -1,17 +1,28 @@
+from datetime import datetime, timedelta
 from time import sleep
+from random import randint
 
 import pyautogui
+from tqdm import tqdm
 
 from autoclick.modules.bombcrypto.hero import Hero
 from autoclick.modules.bombcrypto.chest import Chest
 
+hero = Hero()
+chest = Chest()
+last_workout = datetime.now() - timedelta(hours=2)
+
+print("Prepare windowns...")
+sleep(5)
+
 while True:
 
-    chest = Chest().open()
+    chest.open()
 
     sleep(1.5)
 
     chest.get_bcoin_value()
+    print(datetime.now() - last_workout)
 
     sleep(1.5)
 
@@ -19,20 +30,25 @@ while True:
 
     sleep(1)
 
-    hero = Hero().open()
+    if  datetime.now() - last_workout >= timedelta(hours=2): 
 
-    sleep(4)
+        hero.open()
 
-    if hero.has_full_hero():
+        sleep(2)
+        
         hero.set_all_to_work()
+
         sleep(2)
 
-    hero.close()
+        hero.close()
 
-    sleep(50)
+        sleep(2)
 
-    for iteration in range(9):
-        print(iteration+1, "minutes waited")
-        pyautogui.moveTo(600, 210, duration=1)
-        pyautogui.click()
-        sleep(59)
+        last_workout = datetime.now()
+
+    for iteration in tqdm(range(300)):
+        if iteration%60 == 0:
+            pyautogui.moveTo(randint(550, 650), randint(160, 260))
+            pyautogui.click()
+        sleep(1)
+

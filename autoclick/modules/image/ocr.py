@@ -4,8 +4,10 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 
 def image_to_float(image):
     image_text = pytesseract.image_to_string(image)
-    return float(image_text.replace(",", "."))
-
+    try:
+        return float(image_text.replace(",", "."))
+    except ValueError:
+        return -1
 
 def image_to_text(image):
     image_text = pytesseract.image_to_string(image)

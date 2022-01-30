@@ -22,6 +22,7 @@ run_requirements = [
     "pytesseract",
     "pillow",
     "pyautogui"
+    "tqdm"
 ]
 
 with io.open('./autoclick/__init__.py', encoding='utf8') as version_f:
