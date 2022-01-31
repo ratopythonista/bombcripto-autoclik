@@ -21,7 +21,7 @@ integration_test_requirements = [
 run_requirements = [
     "pytesseract",
     "pillow",
-    "pyautogui"
+    "pyautogui",
     "tqdm"
 ]
 
