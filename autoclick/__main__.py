@@ -5,6 +5,7 @@ from random import randint
 import pyautogui
 from tqdm import tqdm
 
+from autoclick.modules.gshow.vote import vote
 from autoclick.modules.bombcrypto.hero import Hero
 from autoclick.modules.bombcrypto.chest import Chest
 
@@ -19,12 +20,12 @@ while True:
 
     chest.open()
 
-    sleep(1.5)
+    sleep(2)
 
     chest.get_bcoin_value()
     print(datetime.now() - last_workout)
 
-    sleep(1.5)
+    sleep(1)
 
     chest.close()
 
@@ -46,9 +47,10 @@ while True:
 
         last_workout = datetime.now()
 
-    for iteration in tqdm(range(300)):
-        if iteration%60 == 0:
+    for iteration in tqdm(range(250)):
+        if iteration%50 == 0:
             pyautogui.moveTo(randint(550, 650), randint(160, 260))
             pyautogui.click()
+            # vote()
         sleep(1)
 

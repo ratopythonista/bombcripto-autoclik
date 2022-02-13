@@ -12,7 +12,8 @@ df['timestamp'] = df['timestamp'].transform(lambda ts: datetime.fromtimestamp(ts
 
 df = df[df.timestamp >= datetime.strptime("2022-01-29 22:00:00", "%Y-%m-%d %H:%M:%S")]
 
-duration = (df.iloc[-1].timestamp - df.iloc[0].timestamp).seconds/3600
+diff_time = (df.iloc[-1].timestamp - df.iloc[0].timestamp)
+duration = diff_time.seconds/3600 + diff_time.days*24 - 24 - 8
 bcoin_farm = df.iloc[-1].bcoin - df.iloc[0].bcoin
 farm_hora = bcoin_farm/duration
 print("duração", round(duration, 2))
