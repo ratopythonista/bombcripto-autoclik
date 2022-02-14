@@ -19,8 +19,6 @@ integration_test_requirements = [
     'pytest-cov==2.12.1'
 ]
 run_requirements = [
-    "pytesseract",
-    "pillow",
     "pyautogui",
     "tqdm"
 ]

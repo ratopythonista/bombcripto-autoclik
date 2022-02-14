@@ -4,13 +4,14 @@ import pyautogui
 
 class Hero:
     def __init__(self) -> None:
-        self.hero_coordinates = (634, 892)
-        self.close_chest_button = (705, 313)
-        self.all_to_work_button = (531, 371)
+        self.hero_coordinates = (1275, 800)
+        self.close_chest_button = (1330, 320)
+        self.all_to_work_button = (1190, 365)
 
     def open(self):
         pyautogui.moveTo(*self.hero_coordinates)
         pyautogui.click()
+        sleep(1)
         pyautogui.click()
         return self
 
