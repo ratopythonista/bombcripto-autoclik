@@ -29,9 +29,16 @@ while True:
         pyautogui.press('f5') 
         sleep(15)
 
-        # Move To
         pyautogui.moveTo(1280, 670)
         
+        sleep(1)
+        
+        pyautogui.click()
+
+        sleep(2)
+
+        pyautogui.moveTo(1280, 620)
+
         sleep(1)
 
         pyautogui.click()
@@ -52,6 +59,7 @@ while True:
 
         pyautogui.click()
 
+        sleep(2)
 
         hero.open()
 
@@ -66,6 +74,8 @@ while True:
         sleep(2)
 
         last_workout = datetime.now()
+
+    print(datetime.now() - last_workout)
 
 
 

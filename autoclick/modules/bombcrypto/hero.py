@@ -4,7 +4,7 @@ import pyautogui
 
 class Hero:
     def __init__(self) -> None:
-        self.hero_coordinates = (1275, 800)
+        self.hero_coordinates = (1280, 770)
         self.close_chest_button = (1330, 320)
         self.all_to_work_button = (1190, 365)
 
